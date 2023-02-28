@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-# basis-climate
 Website for Basis Climate
 =======
 # Auth0 React SDK Sample Application
@@ -107,4 +105,3 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](../LICENSE) file for more info.
->>>>>>> cfe1646 (first commit)
