@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "local:start:api": "nx run basis-climate",
-    "local:start:web": "nx serve web"
+    "local:start:api": "nx serve api",
+    "local:start:web": "nx serve web",
+    "local:start:infra": "docker compose up"
   },
   "private": true,
   "dependencies": {
