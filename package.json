@@ -6,7 +6,8 @@
     "local:start:api": "nx serve api",
     "local:start:web": "nx serve web",
     "local:start:infra": "docker compose up",
-    "local:db:pull": "prisma db pull"
+    "db:pull": "prisma db pull",
+    "db:generate": "prisma generate"
   },
   "private": true,
   "dependencies": {
@@ -14,6 +15,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@prisma/client": "^4.11.0",
     "axios": "^1.0.0",
     "next": "13.1.1",
     "react": "18.2.0",
