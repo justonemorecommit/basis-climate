@@ -5,7 +5,8 @@
   "scripts": {
     "local:start:api": "nx serve api",
     "local:start:web": "nx serve web",
-    "local:start:infra": "docker compose up"
+    "local:start:infra": "docker compose up",
+    "local:db:pull": "prisma db pull"
   },
   "private": true,
   "dependencies": {
