@@ -1,17 +1,8 @@
-import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
-
-const StyledPage = styled.div`
-  .page {
-  }
-`;
+import { Layout } from "@basis-climate/design-system";
 
 export function Index() {
-  return (
-    <StyledPage>
-      <Button>Hello</Button>
-    </StyledPage>
-  );
+  return <Layout main={<Button>Hello</Button>}></Layout>;
 }
 
 export default Index;
