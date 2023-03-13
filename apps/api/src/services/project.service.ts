@@ -7,6 +7,6 @@ export class ProjectService {
   constructor(private prisma: PrismaService) {}
 
   getFirstProject(): Promise<Project> {
-    return this.prisma.Project.findFirst();
+    return this.prisma.project.findFirst();
   }
 }
