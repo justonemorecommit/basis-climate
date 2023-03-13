@@ -1,13 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
-import { AppService } from './app.service';
+import { ProjectService } from "../services/project.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly projectService: ProjectService) {}
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @Get("/first")
+  async getData() {
+    return await this.projectService.getFirstProject();
   }
 }

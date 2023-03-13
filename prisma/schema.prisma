@@ -7,11 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model projects {
+model Project {
   id             Int      @id @default(autoincrement())
   projectName    String   @db.VarChar(191)
   owner          String   @db.VarChar(191)
   fmv            Decimal  @db.Decimal
   completionDate DateTime @db.Date
   type           String   @db.VarChar(191)
+
+  @@map("projects")
 }
