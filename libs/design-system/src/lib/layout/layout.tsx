@@ -1,4 +1,6 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
+
+import { Header } from "./header";
 
 export type LayoutProps = {
   header?: React.ReactNode;
@@ -9,12 +11,12 @@ export type LayoutProps = {
 export function Layout({ main }: LayoutProps) {
   return (
     <Flex flexDir="column">
-      <Box as="header" px={3} py={2} bgColor="gray.100" boxShadow="lg">
-        <Text fontWeight="bold">BasisClmiate</Text>
-      </Box>
+      <Header />
+
       <Box as="main" p={3}>
         {main}
       </Box>
+
       <Box as="footer"></Box>
     </Flex>
   );
