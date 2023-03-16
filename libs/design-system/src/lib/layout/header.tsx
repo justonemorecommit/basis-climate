@@ -15,7 +15,7 @@ export function Header() {
       bgColor="gray.100"
       boxShadow="lg"
     >
-      <Text fontWeight="bold">BasisClmiate</Text>
+      <Text fontWeight="bold">Basis Climate</Text>
 
       {!isAuthenticated ? (
         <Box ml="auto">
