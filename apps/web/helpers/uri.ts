@@ -3,5 +3,7 @@ export function getAppUrl(path: string) {
     path = path.substring(1);
   }
 
-  return typeof window === "undefined" ? "" : `${window.location.href}${path}`;
+  return typeof window === "undefined"
+    ? ""
+    : `${window.location.origin}/${path}`;
 }
