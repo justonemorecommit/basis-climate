@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { getAppUrl } from "../helpers/uri";
 
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
@@ -28,7 +29,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
           clientId={process.env.NX_AUTH0_CLIENT_ID}
           authorizationParams={{
             redirect_uri:
-              typeof window === "undefined" ? "" : window.location.origin,
+              typeof window === "undefined" ? "" : getAppUrl("/auth/callback"),
           }}
         >
           <ChakraProvider theme={theme}>
