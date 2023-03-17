@@ -1,5 +1,7 @@
-import { Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, UseGuards, Req } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { Request } from "express";
+
 import { Permissions } from "../permissions.decorator";
 import { PermissionsGuard } from "../permissions.guard";
 
@@ -32,5 +34,13 @@ export class AppController {
   @Permissions("two")
   async postAuthTwo() {
     return "authtwo";
+  }
+
+  @Post("/form/webhook")
+  async formWebhook(@Req() req: Request) {
+    console.log(req.body);
+    const { FormId: formId, UniqueId: requestId, ...formValues } = req.body;
+
+    return "Success";
   }
 }

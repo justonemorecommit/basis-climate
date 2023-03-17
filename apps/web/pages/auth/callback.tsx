@@ -19,8 +19,6 @@ export function AuthCallback() {
     (async () => {
       const token = await getAccessTokenSilently();
 
-      console.log({ token });
-
       api.defaults.headers.common["Authorization"] = "Bearer " + token;
     })();
   }, [user, getAccessTokenSilently]);
