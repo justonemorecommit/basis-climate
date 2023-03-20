@@ -12,6 +12,8 @@
 
   Docker(https://docs.docker.com/engine/install/) is used for setting up infrastructure of the server.
 
+- ngrok
+
 ## Development
 
 ### Installation
@@ -33,3 +35,7 @@
   This will start a Nest.js development server
 
 ### Database migration
+
+### Interacting with FormStack
+
+We use Ngrok for exposing the public URL for our dev server.
