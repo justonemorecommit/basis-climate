@@ -18,6 +18,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@basis-climate/contract": [
+        "libs/contract/src/index.ts"
+      ],
       "@basis-climate/design-system": [
         "libs/design-system/src/index.ts"
       ]

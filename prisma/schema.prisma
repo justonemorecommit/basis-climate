@@ -17,3 +17,20 @@ model Project {
 
   @@map("projects")
 }
+
+model ProjectSubmission {
+  id                      Int      @id @default(autoincrement())
+  formId                  Int
+  submissionId            Int
+  assetTypes              Json     @db.Json
+  costToConstruct         Decimal  @db.Decimal
+  emailAddress            String   @db.VarChar(255)
+  estimatedCompletionDate DateTime @db.Date
+  fairMarketValue         Decimal  @db.Decimal
+  firstName               String   @db.VarChar(255)
+  lastName                String   @db.VarChar(255)
+  projectSponsorFirstName String   @db.VarChar(255)
+  projectSponsorLastName  String   @db.VarChar(255)
+
+  @@map("project_submissions")
+}
