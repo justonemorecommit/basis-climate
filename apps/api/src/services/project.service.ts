@@ -10,8 +10,17 @@ export type ProjectSubmissionCreateDto = Omit<ProjectSubmission, "id">;
 export class ProjectService {
   constructor(private prisma: PrismaService) {}
 
+  // TODO: Remove the following method when you refactor
   getFirstProject(): Promise<Project> {
     return this.prisma.project.findFirst();
+  }
+
+  getProjectById(id: number): Promise<Project> {
+    return this.prisma.project.findUnique({
+      where: {
+        id,
+      },
+    });
   }
 
   createProjectSubmission(
