@@ -1,15 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Layout } from "@basis-climate/design-system";
-import { Button, Center, Spinner } from "@chakra-ui/react";
-import { api } from "apps/web/services/api";
+import { Center, Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import {
-  testApiOne,
-  testApiTwo,
-  testApiThree,
-  testApiFourth,
-} from "../../services/api/auth";
+import { api } from "../../services/api";
 
 export function AuthCallback() {
   const router = useRouter();
@@ -17,18 +11,17 @@ export function AuthCallback() {
 
   useEffect(() => {
     (async () => {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: process.env.NX_AUTH0_AUDIENCE,
+        },
+      });
+
+      localStorage.setItem("basisClimateJwtToken", token);
 
       api.defaults.headers.common["Authorization"] = "Bearer " + token;
     })();
   }, [user, getAccessTokenSilently]);
-
-  function handleCallApis() {
-    testApiOne();
-    testApiTwo();
-    testApiThree();
-    testApiFourth();
-  }
 
   return (
     <Layout
@@ -40,7 +33,6 @@ export function AuthCallback() {
         ) : (
           <>
             <p>Success!</p>
-            <Button onClick={handleCallApis}>Button</Button>
           </>
         )
       }

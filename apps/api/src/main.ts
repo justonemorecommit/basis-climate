@@ -5,7 +5,6 @@
 
 import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import cors from "cors";
 import * as ngrok from "ngrok";
 
 import { AppModule } from "./app/app.module";
@@ -15,7 +14,7 @@ async function bootstrap() {
   const globalPrefix = "api";
   app.setGlobalPrefix(globalPrefix);
   const port = Number(process.env.PORT) || 3333;
-  app.use(cors());
+  app.enableCors();
   await app.listen(port);
 
   Logger.log(

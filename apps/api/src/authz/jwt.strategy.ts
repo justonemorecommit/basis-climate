@@ -17,13 +17,19 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       }),
 
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      audience: process.env.NX_AUTH0_AUDEIENCE,
+      audience: process.env.NX_AUTH0_AUDIENCE,
       issuer: auth0IssuerUrl,
       algorithms: ["RS256"],
     });
   }
 
-  validate(payload: unknown): unknown {
-    return payload;
+  validate(payload: any): unknown {
+    const user = {
+      auth0Id: payload.sub,
+      jwtPayload: payload,
+      permissions: payload.permissions,
+    };
+
+    return user;
   }
 }
