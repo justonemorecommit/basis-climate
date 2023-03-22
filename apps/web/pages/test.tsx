@@ -1,13 +1,14 @@
 import * as React from "react";
 
 import { Button } from "@chakra-ui/react";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   testApiOne,
   testApiThree,
   testApiTwo,
   testApiFourth,
 } from "../services/api/auth";
-import { useAuth0 } from "@auth0/auth0-react";
+import { config } from "../config";
 
 export default function TestPage() {
   const { loginWithRedirect } = useAuth0();
@@ -34,7 +35,7 @@ export default function TestPage() {
         onClick={() =>
           loginWithRedirect({
             authorizationParams: {
-              audience: process.env.NX_AUTH0_AUDIENCE,
+              audience: config.auth0.audience,
             },
           })
         }
