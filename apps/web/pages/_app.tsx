@@ -3,12 +3,12 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect } from "react";
+import { ConfigProvider, config } from "@basis-climate/data-access";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 import { getAppUrl } from "../helpers/uri";
 import { api } from "../services/api";
-import { ConfigProvider, config } from "../config";
 
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {

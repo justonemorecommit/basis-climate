@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import { config, Config } from "./config";
 
-export const ConfigContext = createContext<Config>(undefined);
+export const ConfigContext = createContext<Config | undefined>(undefined);
 
 export const useConfig = () => {
   const config = useContext(ConfigContext);
