@@ -25,8 +25,8 @@ export function ProjectTable({ projects }: ProjectTableProps) {
           <Tr>
             <Th>Project Name</Th>
             <Th>Owner</Th>
-            <Th isNumeric>FMV</Th>
-            <Th isNumeric>Completion Date</Th>
+            <Th>FMV</Th>
+            <Th>Completion Date</Th>
             <Th>Type</Th>
           </Tr>
         </Thead>
@@ -35,8 +35,8 @@ export function ProjectTable({ projects }: ProjectTableProps) {
             <Tr key={project.id}>
               <Td>{project.projectName}</Td>
               <Td>{project.owner}</Td>
-              <Td>Test</Td>
-              <Td>Test</Td>
+              <Td>{'$' + project.fmv}</Td>
+              <Td>12-31-2023</Td>
               <Td>{project.type}</Td>
             </Tr>
           ))}
