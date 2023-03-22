@@ -2,22 +2,28 @@ import { useEffect, useState } from "react";
 import { Project } from "@prisma/client";
 import { Button, Layout } from "@basis-climate/design-system";
 
-import { ProjectForm } from "../components/project-form";
-import {
-  testApiOne,
-  testApiTwo,
-  testApiThree,
-  testApiFourth,
-} from "../services/api/auth";
+import { ProjectTable } from "../components/project-table";
+
+import { getProjects } from "../services/api/project";
+
 
 export function Index() {
-  const [firstRecord, setFirstRecord] = useState<Project>();
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getProjects();
+      setProjects(data);
+    })();
+  }, []);
+
+  console.log("yo: ", projects);
 
   return (
     <Layout
       main={
         <>
-          <ProjectForm initialValues={firstRecord} />
+          <ProjectTable projects={projects} />
         </>
       }
     />

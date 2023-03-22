@@ -23,6 +23,10 @@ export class ProjectService {
     });
   }
 
+  getProjects(): Promise<Project[]> {
+    return this.prisma.project.findMany();
+  }
+
   createProjectSubmission(
     input: ProjectSubmissionCreateDto
   ): Promise<ProjectSubmission> {

@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 import { Header } from "./header";
 
@@ -17,7 +17,7 @@ export function Layout({ main }: LayoutProps) {
         {main}
       </Box>
 
-      <Box as="footer"></Box>
+      <Box as="footer" p={3}></Box>
     </Flex>
   );
 }

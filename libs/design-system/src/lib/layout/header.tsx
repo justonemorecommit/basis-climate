@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Image } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { Link } from "../link";
@@ -12,10 +12,10 @@ export function Header() {
       px={3}
       py={2}
       display="flex"
-      bgColor="gray.100"
+      bgColor="#0f0766"
       boxShadow="lg"
     >
-      <Text fontWeight="bold">Basis Climate</Text>
+      <Image w="14" h="14" src="https://uploads-ssl.webflow.com/6332fe20f701c905fdd30077/641a5b103ed75902203d2d2b_basis-mark.png"></Image>
 
       {!isAuthenticated ? (
         <Box ml="auto">
@@ -30,7 +30,9 @@ export function Header() {
           </Link>
         </Box>
       ) : (
-        <Box></Box>
+        <Box ml="auto" mt={4}>
+          <Text color="white">User</Text>
+        </Box>
       )}
     </Box>
   );

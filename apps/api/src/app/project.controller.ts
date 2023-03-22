@@ -12,4 +12,10 @@ export class ProjectController {
 
     return project;
   }
+
+  @Get("/:projectsAll")
+  async getProjects() {
+    const projects = await this.projectService.getProjects();    
+    return projects;
+  }
 }

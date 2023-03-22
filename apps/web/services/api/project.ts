@@ -9,3 +9,8 @@ export const getProjectSubmissions = () => {
 export const getProjectById = async (id: number) => {
   return await api.get<Project>(`/projects/${id}`);
 };
+
+//TODO: This should only show projects tied to the user
+export const getProjects = async () => {
+  return await api.get<Project[]>(`/projectsAll`);
+};
