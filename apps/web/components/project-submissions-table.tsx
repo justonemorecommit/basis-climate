@@ -29,7 +29,7 @@ export function ProjectSubmissionsTable({
             <Th>Project Name</Th>
             <Th>Owner</Th>
             <Th isNumeric>FMV</Th>
-            <Th isNumeric>Completion Date</Th>
+            <Th>Completion Date</Th>
             <Th>Type</Th>
           </Tr>
         </Thead>
