@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
-import { Project } from "@prisma/client";
-import { Button, Layout } from "@basis-climate/design-system";
+import { Layout } from "@basis-climate/design-system";
 
 import { ProjectTable } from "../components/project-table";
 
-import { getProjects } from "../services/api/project";
-
+import { useProjectsQuery } from "@basis-climate/data-access";
 
 export function Index() {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await getProjects();
-      setProjects(data);
-    })();
-  }, []);
-
-  console.log("yo: ", projects);
+  const { data: projects = [] } = useProjectsQuery();
 
   return (
     <Layout

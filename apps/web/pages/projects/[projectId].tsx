@@ -1,8 +1,8 @@
 import { Project } from "@prisma/client";
 import { Layout } from "@basis-climate/design-system";
+import { getProjectById } from "@basis-climate/data-access";
 
 import { ProjectForm } from "../../components/project-form";
-import { getProjectById } from "../../services/api/project";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -19,7 +19,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 export async function getServerSideProps({ params: { projectId } }) {
   const res = await getProjectById(projectId);
 
-  return { props: { project: res.data } };
+  return { props: { project: res } };
 }
 
 export default ProjectDetail;
