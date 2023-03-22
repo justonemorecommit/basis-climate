@@ -19,7 +19,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 export async function getServerSideProps({ params: { projectId } }) {
   const res = await getProjectById(projectId);
 
-  return { props: { project: res.data } };
+  return { props: { project: res } };
 }
 
 export default ProjectDetail;

@@ -1,19 +1,11 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { Layout } from "@basis-climate/design-system";
-import { getProjectSubmissions } from "@basis-climate/data-access";
+import { useProjectSubmissionsQuery } from "@basis-climate/data-access";
 import { Center, Spinner, Textarea } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 
 export function AuthCallback() {
-  const { user, isLoading, getAccessTokenSilently } = useAuth0();
-  const [jsonString, setJsonString] = useState("");
+  const { data: projectSubmissions, isLoading } = useProjectSubmissionsQuery();
 
-  useEffect(() => {
-    (async () => {
-      const projectSubmissions = await getProjectSubmissions();
-      setJsonString(JSON.stringify(projectSubmissions.data, null, 2));
-    })();
-  }, [user, getAccessTokenSilently]);
+  const jsonString = JSON.stringify(projectSubmissions, null, 2);
 
   return (
     <Layout

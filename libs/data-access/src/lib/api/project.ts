@@ -2,12 +2,20 @@
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ProjectSubmissionDto } from "@basis-climate/contract";
 import { Project } from "@prisma/client";
-import { api } from "./api";
+import useSWR from "swr";
 
-export const getProjectSubmissions = () => {
-  return api.get<ProjectSubmissionDto[]>("/form/submissions");
-};
+import { fetcher } from "./api";
 
-export const getProjectById = async (id: number) => {
-  return await api.get<Project>(`/projects/${id}`);
-};
+export const getProjectById = (id: number) =>
+  fetcher<Project>(`/projects/${id}`);
+
+export const getProjectSubmissions = () =>
+  fetcher<ProjectSubmissionDto[]>("/form/submissions");
+
+export const useProjectSubmissionsQuery = () =>
+  useSWR<ProjectSubmissionDto[]>("project-submissions", getProjectSubmissions);
+
+export const useProjectQuery = async (id: number) =>
+  useSWR<Project>(["projects", id], (_: string, id: number) =>
+    getProjectById(id)
+  );
