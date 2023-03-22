@@ -1,4 +1,4 @@
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Image, Avatar } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { Link } from "../link";
@@ -30,9 +30,9 @@ export function Header() {
           </Link>
         </Box>
       ) : (
-        <Box ml="auto" mt={4}>
-          <Text color="white">User</Text>
-        </Box>
+        <Box ml='auto' display='flex' alignItems='center'>
+        <Avatar size='md' name='Derek Silverman' src='https://bit.ly/broken-link' />
+      </Box>
       )}
     </Box>
   );
