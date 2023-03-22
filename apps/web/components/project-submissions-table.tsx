@@ -8,13 +8,16 @@ import {
   TableContainer,
   Heading,
 } from "@chakra-ui/react";
-import { ProjectDto } from "@basis-climate/contract";
+import { ProjectSubmissionDto } from "@basis-climate/contract";
+import { formatDate } from "../utils/format";
 
-export type ProjectTableProps = {
-  projects: ProjectDto[];
+export type ProjectSubmissionsTableProps = {
+  projects: ProjectSubmissionDto[];
 };
 
-export function ProjectTable({ projects }: ProjectTableProps) {
+export function ProjectSubmissionsTable({
+  projects,
+}: ProjectSubmissionsTableProps) {
   return (
     <TableContainer p={20}>
       <Heading as="h5" padding={4}>
@@ -33,11 +36,15 @@ export function ProjectTable({ projects }: ProjectTableProps) {
         <Tbody>
           {projects.map((project) => (
             <Tr key={project.id}>
-              <Td>{project.projectName}</Td>
-              <Td>{project.owner}</Td>
-              <Td>Test</Td>
-              <Td>Test</Td>
-              <Td>{project.type}</Td>
+              <Td>
+                {project.name.firstName} {project.name.lastName}
+              </Td>
+              <Td>
+                {project.name.firstName} {project.name.lastName}
+              </Td>
+              <Td>{project.costToConstruct}</Td>
+              <Td>{formatDate(project.estimatedCompletionDate)}</Td>
+              <Td>{project.assetTypes.join(", ")}</Td>
             </Tr>
           ))}
         </Tbody>

@@ -10,7 +10,7 @@ export const getProjectById = (id: number) =>
   fetcher<Project>(`/projects/${id}`);
 
 export const getProjectSubmissions = () =>
-  fetcher<ProjectSubmissionDto[]>("/form/submissions");
+  fetcher<ProjectSubmissionDto[]>("/projects/submissions");
 
 export const getProjects = () => fetcher<ProjectDto[]>("/projects");
 

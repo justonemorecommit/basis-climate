@@ -71,11 +71,6 @@ export class AppController {
     return "authtwo";
   }
 
-  @Get("/form/submissions")
-  async getProjectIntakeSubmissions(): Promise<ProjectSubmissionDto[]> {
-    return await this.projectService.getProjectSubmissions();
-  }
-
   @Post("/form/webhook")
   async formWebhook(@Body() input: ProjectIntakeSubmissionDto) {
     if (input.FormID === FormStackService.formIds.projectIntake) {
