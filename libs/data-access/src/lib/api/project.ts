@@ -1,3 +1,5 @@
+// TODO: Remove the following eslint problem
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ProjectSubmissionDto } from "@basis-climate/contract";
 import { Project } from "@prisma/client";
 import { api } from "./api";

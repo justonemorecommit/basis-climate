@@ -1,9 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Layout } from "@basis-climate/design-system";
+import { getProjectSubmissions } from "@basis-climate/data-access";
 import { Center, Spinner, Textarea } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
-import { getProjectSubmissions } from "../../services/api/project";
 
 export function AuthCallback() {
   const { user, isLoading, getAccessTokenSilently } = useAuth0();

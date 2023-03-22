@@ -1,14 +1,13 @@
 import * as React from "react";
 import { Button } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { config } from "@basis-climate/data-access";
-
 import {
+  config,
   testApiOne,
   testApiThree,
   testApiTwo,
   testApiFourth,
-} from "../services/api/auth";
+} from "@basis-climate/data-access";
 
 export default function TestPage() {
   const { loginWithRedirect } = useAuth0();
