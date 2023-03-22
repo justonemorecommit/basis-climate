@@ -40,7 +40,8 @@ export function ProjectSubmissionsTable({
                 {project.name.firstName} {project.name.lastName}
               </Td>
               <Td>
-                {project.name.firstName} {project.name.lastName}
+                {project.projectSponsor.firstName}{" "}
+                {project.projectSponsor.lastName}
               </Td>
               <Td>{project.costToConstruct}</Td>
               <Td>{formatDate(project.estimatedCompletionDate)}</Td>
