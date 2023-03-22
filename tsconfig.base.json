@@ -21,6 +21,9 @@
       "@basis-climate/contract": [
         "libs/contract/src/index.ts"
       ],
+      "@basis-climate/data-access": [
+        "libs/data-access/src/index.ts"
+      ],
       "@basis-climate/design-system": [
         "libs/design-system/src/index.ts"
       ]
