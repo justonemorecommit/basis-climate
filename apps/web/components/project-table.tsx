@@ -7,6 +7,7 @@ import {
   Td,
   TableContainer,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import { ProjectDto } from "@basis-climate/contract";
 
@@ -25,18 +26,18 @@ export function ProjectTable({ projects }: ProjectTableProps) {
           <Tr>
             <Th>Project Name</Th>
             <Th>Owner</Th>
-            <Th isNumeric>FMV</Th>
-            <Th isNumeric>Completion Date</Th>
+            <Th>FMV</Th>
+            <Th>Completion Date</Th>
             <Th>Type</Th>
           </Tr>
         </Thead>
         <Tbody>
           {projects.map((project) => (
             <Tr key={project.id}>
-              <Td>{project.projectName}</Td>
+              <Td><Link href={`/projects/${project.id}`}>{project.projectName}</Link></Td>
               <Td>{project.owner}</Td>
-              <Td>Test</Td>
-              <Td>Test</Td>
+              <Td>{'$' + project.fmv}</Td>
+              <Td>12-31-2023</Td>
               <Td>{project.type}</Td>
             </Tr>
           ))}
