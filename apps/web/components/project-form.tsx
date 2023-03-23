@@ -3,6 +3,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Heading,
 } from "@chakra-ui/react";
 
 import { Project } from "../services/types";
@@ -30,7 +31,10 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
-      <FormControl isInvalid={!!errors.projectName} mb={3}>
+      <Heading as="h5" padding={4}>
+        Project Details 
+      </Heading>
+      <FormControl isInvalid={!!errors.projectName} mb={3} pl={4}>
         <FormLabel>Project Name</FormLabel>
         <Input type="text" {...register("projectName", { required: true })} />
         <FormErrorMessage>
@@ -38,13 +42,13 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.owner} mb={3}>
+      <FormControl isInvalid={!!errors.owner} mb={3} pl={4}>
         <FormLabel>Owner</FormLabel>
         <Input type="text" {...register("owner", { required: true })} />
         <FormErrorMessage>{errors.owner?.message.toString()}</FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.fmv} mb={3}>
+      <FormControl isInvalid={!!errors.fmv} mb={3} pl={4}>
         <FormLabel>FMV</FormLabel>
         <Input
           type="text"
@@ -53,7 +57,7 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
         <FormErrorMessage>{errors.fmv?.message.toString()}</FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.completionDate} mb={3}>
+      <FormControl isInvalid={!!errors.completionDate} mb={3} pl={4}>
         <FormLabel>Completion Date</FormLabel>
         <Input
           type="date"
@@ -66,7 +70,7 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.completionDate} mb={3}>
+      <FormControl isInvalid={!!errors.completionDate} mb={3} pl={4}>
         <FormLabel>Type</FormLabel>
         <Input
           type="text"

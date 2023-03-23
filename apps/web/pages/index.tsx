@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { Project } from "@prisma/client";
 import { Layout } from "@basis-climate/design-system";
 
-import { ProjectForm } from "../components/project-form";
+import { ProjectTable } from "../components/project-table";
+
+import { useProjectsQuery } from "@basis-climate/data-access";
 
 export function Index() {
-  const [firstRecord] = useState<Project>();
+  const { data: projects = [] } = useProjectsQuery();
 
   return (
     <Layout
       main={
         <>
-          <ProjectForm initialValues={firstRecord} />
+          <ProjectTable projects={projects} />
         </>
       }
     />

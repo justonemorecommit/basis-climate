@@ -1,6 +1,6 @@
 // TODO: Remove the following eslint problem
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { ProjectSubmissionDto } from "@basis-climate/contract";
+import { ProjectSubmissionDto, ProjectDto } from "@basis-climate/contract";
 import { Project } from "@prisma/client";
 import useSWR from "swr";
 
@@ -10,12 +10,16 @@ export const getProjectById = (id: number) =>
   fetcher<Project>(`/projects/${id}`);
 
 export const getProjectSubmissions = () =>
-  fetcher<ProjectSubmissionDto[]>("/form/submissions");
+  fetcher<ProjectSubmissionDto[]>("/projects/submissions");
+
+export const getProjects = () => fetcher<ProjectDto[]>("/projects");
 
 export const useProjectSubmissionsQuery = () =>
   useSWR<ProjectSubmissionDto[]>("project-submissions", getProjectSubmissions);
 
-export const useProjectQuery = async (id: number) =>
+export const useProjectQuery = (id: number) =>
   useSWR<Project>(["projects", id], (_: string, id: number) =>
     getProjectById(id)
   );
+
+export const useProjectsQuery = () => useSWR("projects", getProjects);

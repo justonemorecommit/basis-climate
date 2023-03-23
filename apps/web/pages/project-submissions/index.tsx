@@ -1,11 +1,11 @@
 import { Layout } from "@basis-climate/design-system";
 import { useProjectSubmissionsQuery } from "@basis-climate/data-access";
-import { Center, Spinner, Textarea } from "@chakra-ui/react";
+import { Center, Spinner } from "@chakra-ui/react";
+
+import { ProjectSubmissionsTable } from "../../components/project-submissions-table";
 
 export function AuthCallback() {
   const { data: projectSubmissions, isLoading } = useProjectSubmissionsQuery();
-
-  const jsonString = JSON.stringify(projectSubmissions, null, 2);
 
   return (
     <Layout
@@ -16,7 +16,7 @@ export function AuthCallback() {
           </Center>
         ) : (
           <>
-            <Textarea height="600px" value={jsonString} />
+            <ProjectSubmissionsTable projects={projectSubmissions} />
           </>
         )
       }

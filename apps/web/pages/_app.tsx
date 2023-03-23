@@ -31,7 +31,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to web!</title>
+        <title>Basis Climate</title>
       </Head>
       <main className="app">
         <ConfigProvider>

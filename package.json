@@ -9,6 +9,7 @@
     "local:start:api": "nx serve api",
     "local:start:web": "nx serve web",
     "local:start:infra": "docker compose up",
+    "local:start:all": "concurrently --kill-others-on-fail -n \"infra,web,api\" -c \"green,yellow,blue\" \"npm run local:start:infra\" \"npm run local:start:web\" \"npm run local:start:api\"",
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
     "db:migration:up": "prisma migrate dev"
@@ -69,6 +70,7 @@
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/ui": "^0.25.8",
     "babel-jest": "^29.4.1",
+    "concurrently": "^7.6.0",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-next": "13.1.1",

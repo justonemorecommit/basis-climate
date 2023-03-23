@@ -1,4 +1,6 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { useAuth } from "@basis-climate/data-access";
+import { Box, Center, Flex } from "@chakra-ui/react";
+import { Spinner } from "../spinner";
 
 import { Header } from "./header";
 
@@ -9,7 +11,13 @@ export type LayoutProps = {
 };
 
 export function Layout({ main }: LayoutProps) {
-  return (
+  const { isLoading } = useAuth();
+
+  return isLoading ? (
+    <Center w="100vw" h="100vh">
+      <Spinner size="xl" />
+    </Center>
+  ) : (
     <Flex flexDir="column">
       <Header />
 
@@ -17,7 +25,7 @@ export function Layout({ main }: LayoutProps) {
         {main}
       </Box>
 
-      <Box as="footer"></Box>
+      <Box as="footer" p={3}></Box>
     </Flex>
   );
 }
