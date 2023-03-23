@@ -3,12 +3,10 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect } from "react";
-import { ConfigProvider, config } from "@basis-climate/data-access";
+import { ConfigProvider } from "@basis-climate/data-access";
 import { setAccessToken } from "@basis-climate/data-access";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { Auth0Provider } from "@auth0/auth0-react";
-
-import { getAppUrl } from "../helpers/uri";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
@@ -22,6 +20,8 @@ const colors = {
 const theme = extendTheme({ colors });
 
 function CustomApp({ Component, pageProps }: AppProps) {
+  const { user } = pageProps;
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setAccessToken(localStorage.getItem("basisClimateJwtToken"));
@@ -35,20 +35,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
       </Head>
       <main className="app">
         <ConfigProvider>
-          <Auth0Provider
-            domain={config.auth0.domain}
-            clientId={config.auth0.clientId}
-            authorizationParams={{
-              redirect_uri:
-                typeof window === "undefined"
-                  ? ""
-                  : getAppUrl("/auth/callback"),
-            }}
-          >
+          <UserProvider user={user}>
             <ChakraProvider theme={theme}>
               <Component {...pageProps} />
             </ChakraProvider>
-          </Auth0Provider>
+          </UserProvider>
         </ConfigProvider>
       </main>
     </>

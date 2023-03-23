@@ -1,7 +1,7 @@
-import { Layout } from "@basis-climate/design-system";
 import { useProjectSubmissionsQuery } from "@basis-climate/data-access";
 import { Center, Spinner } from "@chakra-ui/react";
 
+import { Layout } from "../../components/layout";
 import { ProjectSubmissionsTable } from "../../components/project-submissions-table";
 
 export function AuthCallback() {

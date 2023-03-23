@@ -1,16 +1,15 @@
 import * as React from "react";
-import { Button } from "@chakra-ui/react";
-import { useAuth0 } from "@auth0/auth0-react";
 import {
-  config,
   testApiOne,
   testApiThree,
   testApiTwo,
   testApiFourth,
+  useAuth,
 } from "@basis-climate/data-access";
+import { Button } from "@basis-climate/design-system";
 
 export default function TestPage() {
-  const { loginWithRedirect } = useAuth0();
+  const { loginUrl } = useAuth();
 
   const handleCallPublic = () => {
     testApiOne();
@@ -30,17 +29,7 @@ export default function TestPage() {
 
   return (
     <>
-      <Button
-        onClick={() =>
-          loginWithRedirect({
-            authorizationParams: {
-              audience: config.auth0.audience,
-            },
-          })
-        }
-      >
-        Login
-      </Button>
+      <Button href={loginUrl}>Login</Button>
       <Button onClick={handleCallPublic}>Public</Button>
       <Button onClick={handleCallAuthenticated}>Authenticated</Button>
       <Button onClick={handleCallUnauthorized}>Authorized</Button>

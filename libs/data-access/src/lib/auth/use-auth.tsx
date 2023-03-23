@@ -1,20 +1,26 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useConfig } from "../config/config.context";
+import { useRouter } from "next/router";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export function useAuth() {
-  const auth = useAuth0();
-  const config = useConfig();
+  const auth = useUser();
+  const router = useRouter();
+
+  const loginUrl = "/api/auth/login";
+  const logoutUrl = "/api/auth/logout";
 
   const loginWithRedirect = () => {
-    auth.loginWithRedirect({
-      authorizationParams: {
-        audience: config.auth0.audience,
-      },
-    });
+    router.push(loginUrl);
+  };
+
+  const logoutWithRedirect = () => {
+    router.push(logoutUrl);
   };
 
   return {
     ...auth,
+    loginUrl,
+    logoutUrl,
     loginWithRedirect,
+    logoutWithRedirect,
   };
 }

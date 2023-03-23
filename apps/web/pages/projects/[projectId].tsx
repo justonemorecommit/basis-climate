@@ -1,7 +1,7 @@
 import { Project } from "@prisma/client";
-import { Layout } from "@basis-climate/design-system";
 import { getProjectById } from "@basis-climate/data-access";
 
+import { Layout } from "../../components/layout";
 import { ProjectForm } from "../../components/project-form";
 
 export function ProjectDetail({ project }: { project: Project }) {

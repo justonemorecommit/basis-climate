@@ -1,7 +1,7 @@
 import { useAuth } from "@basis-climate/data-access";
 import { Box, Center, Flex } from "@chakra-ui/react";
-import { Spinner } from "../spinner";
 
+import { Spinner } from "@basis-climate/design-system";
 import { Header } from "./header";
 
 export type LayoutProps = {

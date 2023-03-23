@@ -1,17 +1,15 @@
-import { Layout } from "@basis-climate/design-system";
+import { Center, Heading } from "@chakra-ui/react";
 
-import { ProjectTable } from "../components/project-table";
-
-import { useProjectsQuery } from "@basis-climate/data-access";
+import { Layout } from "../components/layout";
 
 export function Index() {
-  const { data: projects = [] } = useProjectsQuery();
-
   return (
     <Layout
       main={
         <>
-          <ProjectTable projects={projects} />
+          <Center mt={10}>
+            <Heading size="lg">Welcome!</Heading>
+          </Center>
         </>
       }
     />
