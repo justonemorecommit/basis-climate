@@ -3,6 +3,7 @@ import { getProjectById } from "@basis-climate/data-access";
 
 import { Layout } from "../../components/layout";
 import { ProjectForm } from "../../components/project-form";
+import { auth0 } from "../../auth0";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -16,10 +17,12 @@ export function ProjectDetail({ project }: { project: Project }) {
   );
 }
 
-export async function getServerSideProps({ params: { projectId } }) {
-  const res = await getProjectById(projectId);
+export const getServerSideProps = auth0.withPageAuthRequired({
+  async getServerSideProps({ params: { projectId } }) {
+    const res = await getProjectById(Number(projectId));
 
-  return { props: { project: res } };
-}
+    return { props: { project: res } };
+  },
+});
 
 export default ProjectDetail;

@@ -10,12 +10,11 @@ import {
   FormErrorMessage,
 } from "@basis-climate/design-system";
 import { Center } from "@chakra-ui/react";
-import { api } from "libs/data-access/src/lib/api/api";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { Layout } from "../../components/layout";
 import { getUserFromSession } from "../../helpers/auth";
+import { auth0 } from "../../auth0";
 
 export type ProfilePageProps = {
   user: UserDto;
@@ -30,12 +29,8 @@ export function ProfilePage({ user }: ProfilePageProps) {
     defaultValues: user,
   });
 
-  useEffect(() => {
-    api.get("/first");
-  }, []);
-
   async function handleSave(formValues: UserDto) {
-    const nextProfile = await updateProfile({
+    await updateProfile({
       name: formValues.name,
     });
   }
@@ -62,14 +57,16 @@ export function ProfilePage({ user }: ProfilePageProps) {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const user = await getUserFromSession(ctx);
+export const getServerSideProps = auth0.withPageAuthRequired({
+  async getServerSideProps(ctx) {
+    const user = await getUserFromSession(ctx);
 
-  return {
-    props: {
-      user,
-    },
-  };
-}
+    return {
+      props: {
+        user,
+      },
+    };
+  },
+});
 
 export default ProfilePage;

@@ -3,9 +3,11 @@ import { Center, Spinner } from "@chakra-ui/react";
 
 import { Layout } from "../../components/layout";
 import { ProjectSubmissionsTable } from "../../components/project-submissions-table";
+import { auth0 } from "../../auth0";
 
-export function AuthCallback() {
-  const { data: projectSubmissions, isLoading } = useProjectSubmissionsQuery();
+export function ProjectSubmissions() {
+  const { data: projectSubmissions = [], isLoading } =
+    useProjectSubmissionsQuery();
 
   return (
     <Layout
@@ -24,4 +26,6 @@ export function AuthCallback() {
   );
 }
 
-export default AuthCallback;
+export const getServerSideProps = auth0.withPageAuthRequired();
+
+export default ProjectSubmissions;

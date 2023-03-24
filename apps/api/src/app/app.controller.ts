@@ -50,26 +50,6 @@ export class AppController {
     return "public";
   }
 
-  @UseGuards(AuthGuard("jwt"))
-  @Get("/first")
-  async getData() {
-    return await this.projectService.getFirstProject();
-  }
-
-  @UseGuards(AuthGuard("jwt"), PermissionsGuard)
-  @Post("/second")
-  @Permissions("one")
-  async postAuthOne() {
-    return "authone";
-  }
-
-  @UseGuards(AuthGuard("jwt"), PermissionsGuard)
-  @Post("/third")
-  @Permissions("two")
-  async postAuthTwo() {
-    return "authtwo";
-  }
-
   @Post("/form/webhook")
   async formWebhook(@Body() input: ProjectIntakeSubmissionDto) {
     if (input.FormID === FormStackService.formIds.projectIntake) {
