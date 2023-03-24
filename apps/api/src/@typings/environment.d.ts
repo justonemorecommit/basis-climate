@@ -9,5 +9,6 @@ declare namespace NodeJS {
     NX_APP_URL: string;
     NX_AUTO_NGROK: string;
     NX_APP_SECRET: string;
+    NX_AUTH0_MANAGEMENT_API_TOKEN: string;
   }
 }

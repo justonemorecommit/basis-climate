@@ -1,4 +1,4 @@
-import auth0 from "../../../auth0";
+import { auth0 } from "../../../auth0";
 
 export default auth0.handleAuth({
   login: auth0.handleLogin({

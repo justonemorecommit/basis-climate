@@ -8,7 +8,6 @@ import {
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Decimal } from "@prisma/client/runtime";
-import { ProjectSubmissionDto } from "@basis-climate/contract";
 
 import { ProjectIntakeSubmissionDto } from "../dtos/project-intake-submission.dto";
 import { Permissions } from "../permissions.decorator";
