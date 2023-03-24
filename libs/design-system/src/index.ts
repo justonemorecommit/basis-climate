@@ -1,1 +1,23 @@
 export * from "./lib";
+export {
+  Box,
+  Heading,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  Image,
+  Avatar,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+  Flex,
+} from "@chakra-ui/react";

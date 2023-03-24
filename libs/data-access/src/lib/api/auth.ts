@@ -1,17 +1,8 @@
-import { api } from "./api";
+// TODO
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { ProfileUpdateDto, UserDto } from "@basis-climate/contract";
+import { api, fetcher } from "./api";
 
-export function testApiOne() {
-  return api.get("/public");
-}
-
-export function testApiTwo() {
-  return api.get("/first");
-}
-
-export function testApiThree() {
-  return api.post("/second");
-}
-
-export function testApiFourth() {
-  return api.post("/third");
+export async function updateProfile(nextProfile: ProfileUpdateDto) {
+  return (await api.put<UserDto>("/profile", nextProfile)).data;
 }

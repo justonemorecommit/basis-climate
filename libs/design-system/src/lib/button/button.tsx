@@ -13,5 +13,5 @@ export function Button({ href, ...buttonProps }: ButtonProps) {
       }
     : {};
 
-  return <Button {...linkProps} {...buttonProps} />;
+  return <Chakra.Button colorScheme="blue" {...linkProps} {...buttonProps} />;
 }

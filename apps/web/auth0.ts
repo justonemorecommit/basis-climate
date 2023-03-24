@@ -1,6 +1,6 @@
 import { initAuth0 } from "@auth0/nextjs-auth0";
 
-export default initAuth0({
+export const auth0 = initAuth0({
   secret: process.env.NX_APP_SECRET,
   issuerBaseURL: `https://${process.env.NX_AUTH0_DOMAIN}`,
   baseURL: process.env.NX_APP_URL,

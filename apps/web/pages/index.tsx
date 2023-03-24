@@ -1,3 +1,4 @@
+import { NextPageContext } from "next";
 import { Center, Heading } from "@chakra-ui/react";
 
 import { Layout } from "../components/layout";
@@ -14,6 +15,12 @@ export function Index() {
       }
     />
   );
+}
+
+export async function getServerSideProps(ctx: NextPageContext) {
+  return {
+    props: {},
+  };
 }
 
 export default Index;

@@ -3,7 +3,7 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect } from "react";
-import { ConfigProvider } from "@basis-climate/data-access";
+import { ConfigProvider, useAuth } from "@basis-climate/data-access";
 import { setAccessToken } from "@basis-climate/data-access";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
@@ -36,6 +36,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <main className="app">
         <ConfigProvider>
           <UserProvider user={user}>
+            <TokenWatcher />
             <ChakraProvider theme={theme}>
               <Component {...pageProps} />
             </ChakraProvider>
@@ -44,6 +45,17 @@ function CustomApp({ Component, pageProps }: AppProps) {
       </main>
     </>
   );
+}
+
+function TokenWatcher() {
+  const { accessToken } = useAuth();
+
+  useEffect(() => {
+    setAccessToken(accessToken);
+    localStorage.setItem("basisClimateJwtToken", accessToken);
+  }, [accessToken]);
+
+  return null;
 }
 
 export default CustomApp;

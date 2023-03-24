@@ -1,3 +1,4 @@
+import { useAuth } from "@basis-climate/data-access";
 import {
   Box,
   Image,
@@ -6,10 +7,9 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-} from "@chakra-ui/react";
-import { useAuth } from "@basis-climate/data-access";
-
-import { Link } from "../../../../libs/design-system/src/lib/link";
+  MenuGroup,
+  Link,
+} from "@basis-climate/design-system";
 
 export function Header() {
   const { user, loginUrl, logoutWithRedirect } = useAuth();
@@ -28,6 +28,7 @@ export function Header() {
         w="14"
         h="14"
         src="https://uploads-ssl.webflow.com/6332fe20f701c905fdd30077/641a5b103ed75902203d2d2b_basis-mark.png"
+        alt="Logo"
       ></Image>
 
       {!user ? (
@@ -43,7 +44,14 @@ export function Header() {
               {user && <Avatar my="auto" src={user.picture} />}
             </MenuButton>
             <MenuList>
-              <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
+              <MenuGroup title="Profile">
+                <MenuItem as={Link} href="/auth/profile">
+                  Profile
+                </MenuItem>
+              </MenuGroup>
+              <MenuGroup title="Actions">
+                <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
+              </MenuGroup>
             </MenuList>
           </Menu>
         </Box>
