@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": "16.13.2"
+    "node": ">16"
   },
   "scripts": {
     "local:start:api": "nx serve api",
