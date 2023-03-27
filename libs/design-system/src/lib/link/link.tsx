@@ -5,10 +5,10 @@ import {
 import NextLink from "next/link";
 import { forwardRef } from "react";
 
-export type LinkProps = ChakraLinkProps;
+export type LinkProps = ChakraLinkProps & { children?: React.ReactNode };
 
-export const Link = forwardRef<HTMLAnchorElement>(function Link(
-  props: LinkProps,
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+  props,
   ref
 ) {
   return <ChakraLink as={NextLink} ref={ref} {...props} />;

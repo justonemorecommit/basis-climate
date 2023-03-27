@@ -6,12 +6,12 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-import { Project } from "../services/types";
+import { ProjectDto } from "@basis-climate/contract";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 
 export type ProjectFormProps = {
-  initialValues: Project;
+  initialValues: ProjectDto;
 };
 
 export function ProjectForm({ initialValues }: ProjectFormProps) {
@@ -21,18 +21,18 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
     reset,
     formState: { errors },
   } = useForm();
-  const form = useForm<Project>();
+  const form = useForm<ProjectDto>();
 
   useEffect(() => {
     reset(initialValues);
   }, [initialValues, reset]);
 
-  function handleSubmitForm(values: Project) {}
+  function handleSubmitForm(values: ProjectDto) {}
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
       <Heading as="h5" padding={4}>
-        Project Details 
+        Project Details
       </Heading>
       <FormControl isInvalid={!!errors.projectName} mb={3} pl={4}>
         <FormLabel>Project Name</FormLabel>
