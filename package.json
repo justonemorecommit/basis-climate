@@ -10,7 +10,7 @@
     "local:start:web": "nx serve web",
     "local:start:infra": "docker compose up",
     "local:start:all": "concurrently --kill-others-on-fail -n \"infra,web,api\" -c \"green,yellow,blue\" \"npm run local:start:infra\" \"npm run local:start:web\" \"npm run local:start:api\"",
-    "prod:build:web": "nx build web",
+    "build": "nx build web",
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
     "db:migration:up": "prisma migrate dev"
