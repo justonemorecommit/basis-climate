@@ -21,6 +21,7 @@
 - `npm install` to install dependencies
 
 ### Starting server
+- `npm run local:start:all` to start all 3 (infra, web, api)
 
 - `npm run local:start:infra` for starting infrastructure
 
