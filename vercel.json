@@ -1,4 +1,5 @@
 {
   "buildCommand": "nx build web",
-  "outputDirectory": "./dist/.next"
+  "outputDirectory": "./dist/.next",
+  "installCommand": "npm install"
 }
