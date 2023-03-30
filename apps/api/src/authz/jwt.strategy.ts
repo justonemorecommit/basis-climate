@@ -3,7 +3,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { passportJwtSecret } from "jwks-rsa";
 
-const auth0IssuerUrl = `https://${process.env.NX_AUTH0_DOMAIN}/`;
+const auth0IssuerUrl = `https://${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}/`;
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -17,12 +17,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       }),
 
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      audience: process.env.NX_AUTH0_AUDIENCE,
+      audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
       issuer: auth0IssuerUrl,
       algorithms: ["RS256"],
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   validate(payload: any): unknown {
     const user = {
       auth0Id: payload.sub,

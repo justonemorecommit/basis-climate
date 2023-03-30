@@ -7,7 +7,7 @@ export class Auth0ManagementClientService {
 
   constructor() {
     this.auth0Client = new ManagementClient({
-      domain: process.env.NX_AUTH0_DOMAIN,
+      domain: process.env.NEXT_PUBLIC_AUTH0_DOMAIN,
       token: process.env.NX_AUTH0_MANAGEMENT_API_TOKEN,
     });
   }
